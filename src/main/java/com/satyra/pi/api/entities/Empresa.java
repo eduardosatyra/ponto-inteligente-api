@@ -20,11 +20,11 @@ import javax.persistence.Table;
  * @author eduardosatyra
  *
  */
-
 @Entity
 @Table(name = "empresa")
 public class Empresa implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = 3960436649365666213L;
 
 	private Long id;
 	private String razaoSocial;
@@ -37,7 +37,7 @@ public class Empresa implements Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
 		return id;
 	}
@@ -73,7 +73,7 @@ public class Empresa implements Serializable {
 		this.dataCriacao = dataCriacao;
 	}
 
-	@Column(name = "data_atualizacao", nullable = true)
+	@Column(name = "data_atualizacao", nullable = false)
 	public Date getDataAtualizacao() {
 		return dataAtualizacao;
 	}
@@ -100,25 +100,12 @@ public class Empresa implements Serializable {
 	public void prePersist() {
 		final Date atual = new Date();
 		dataCriacao = atual;
+		dataAtualizacao = atual;
 	}
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Empresa [id=");
-		builder.append(id);
-		builder.append(", razaoSocial=");
-		builder.append(razaoSocial);
-		builder.append(", cnpj=");
-		builder.append(cnpj);
-		builder.append(", dataCriacao=");
-		builder.append(dataCriacao);
-		builder.append(", dataAtualizacao=");
-		builder.append(dataAtualizacao);
-		builder.append(", funcionarios=");
-		builder.append(funcionarios);
-		builder.append("]");
-		return builder.toString();
+		return "Empresa [id=" + id + ", razaoSocial=" + razaoSocial + ", cnpj=" + cnpj + ", dataCriacao=" + dataCriacao
+				+ ", dataAtualizacao=" + dataAtualizacao + "]";
 	}
-
 }

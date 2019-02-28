@@ -28,7 +28,6 @@ import com.satyra.pi.api.enums.TipoEnum;
 @Entity
 @Table(name = "lancamento")
 public class Lancamento implements Serializable {
-
 	private static final long serialVersionUID = 6524560251526772839L;
 
 	private Long id;
@@ -44,7 +43,7 @@ public class Lancamento implements Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
 		return id;
 	}
@@ -90,7 +89,7 @@ public class Lancamento implements Serializable {
 		this.dataCriacao = dataCriacao;
 	}
 
-	@Column(name = "data_atualizacao", nullable = true)
+	@Column(name = "data_atualizacao")
 	public Date getDataAtualizacao() {
 		return dataAtualizacao;
 	}
