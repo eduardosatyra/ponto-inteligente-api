@@ -100,7 +100,6 @@ public class Empresa implements Serializable {
 	public void prePersist() {
 		final Date atual = new Date();
 		dataCriacao = atual;
-		dataAtualizacao = atual;
 	}
 
 	@Override
